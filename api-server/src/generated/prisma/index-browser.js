@@ -120,9 +120,136 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.UserScalarFieldEnum = {
+  Id: 'Id',
+  FirstName: 'FirstName',
+  LastName: 'LastName',
+  Email: 'Email',
+  Role: 'Role',
+  Password: 'Password',
+  StaffID: 'StaffID',
+  DepartmentId: 'DepartmentId',
+  FloorId: 'FloorId'
+};
+
+exports.Prisma.VisitorScalarFieldEnum = {
+  Id: 'Id',
+  Name: 'Name',
+  Phone: 'Phone',
+  Email: 'Email',
+  Address: 'Address',
+  Photo: 'Photo',
+  CompanyId: 'CompanyId'
+};
+
+exports.Prisma.CompanyScalarFieldEnum = {
+  Id: 'Id',
+  Name: 'Name',
+  Address: 'Address'
+};
+
+exports.Prisma.VisitorLogScalarFieldEnum = {
+  Id: 'Id',
+  VisitorId: 'VisitorId',
+  StaffId: 'StaffId',
+  PurposeOfVisit: 'PurposeOfVisit',
+  TagNo: 'TagNo',
+  NoOfVistiors: 'NoOfVistiors',
+  CheckInTime: 'CheckInTime',
+  CheckOutTime: 'CheckOutTime',
+  CreatedAt: 'CreatedAt'
+};
+
+exports.Prisma.FloorScalarFieldEnum = {
+  Id: 'Id',
+  Name: 'Name'
+};
+
+exports.Prisma.DepartmentScalarFieldEnum = {
+  Id: 'Id',
+  Name: 'Name'
+};
+
+exports.Prisma.AppointmentScalarFieldEnum = {
+  Id: 'Id',
+  StaffId: 'StaffId',
+  VisitorId: 'VisitorId',
+  Purpose: 'Purpose',
+  Message: 'Message',
+  NoVisitors: 'NoVisitors',
+  InvitationCode: 'InvitationCode',
+  Status: 'Status',
+  CreatedAt: 'CreatedAt',
+  AppointmentDate: 'AppointmentDate',
+  RescheduleDate: 'RescheduleDate',
+  CancellationReason: 'CancellationReason'
+};
+
+exports.Prisma.SMSNotificationScalarFieldEnum = {
+  Id: 'Id',
+  RecipientPhone: 'RecipientPhone',
+  RecipientName: 'RecipientName',
+  Message: 'Message',
+  RetryCount: 'RetryCount',
+  Status: 'Status',
+  LastRetryDate: 'LastRetryDate',
+  ErrorMessage: 'ErrorMessage',
+  CreatedAt: 'CreatedAt'
+};
+
+exports.Prisma.EmailNotificationScalarFieldEnum = {
+  Id: 'Id',
+  RecipientEmail: 'RecipientEmail',
+  RecipientName: 'RecipientName',
+  Subject: 'Subject',
+  Message: 'Message',
+  RetryCount: 'RetryCount',
+  Status: 'Status',
+  LastRetryDate: 'LastRetryDate',
+  ErrorMessage: 'ErrorMessage',
+  CreatedAt: 'CreatedAt'
+};
+
+exports.Prisma.ArchiveNotificationScalarFieldEnum = {
+  Id: 'Id',
+  Type: 'Type',
+  Recipient: 'Recipient',
+  Subject: 'Subject',
+  Message: 'Message',
+  DeliveryDate: 'DeliveryDate',
+  CreatedAt: 'CreatedAt'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.Role = exports.$Enums.Role = {
+  Admin: 'Admin',
+  Staff: 'Staff'
+};
 
 exports.Prisma.ModelName = {
-
+  User: 'User',
+  Visitor: 'Visitor',
+  Company: 'Company',
+  VisitorLog: 'VisitorLog',
+  Floor: 'Floor',
+  Department: 'Department',
+  Appointment: 'Appointment',
+  SMSNotification: 'SMSNotification',
+  EmailNotification: 'EmailNotification',
+  ArchiveNotification: 'ArchiveNotification'
 };
 
 /**
