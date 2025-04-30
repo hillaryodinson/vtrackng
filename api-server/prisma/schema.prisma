@@ -13,3 +13,123 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Role {
+  Admin
+  Staff
+}
+
+model User {
+  Id           String        @id @default(cuid())
+  FirstName    String
+  LastName     String
+  Email        String
+  Role         Role          @default(Staff)
+  Password     String
+  StaffID      String?
+  VisitorLogs  VisitorLog[]
+  Department   Department    @relation(fields: [DepartmentId], references: [Id])
+  Floor        Floor         @relation(fields: [FloorId], references: [Id])
+  DepartmentId String
+  FloorId      String
+  Appointments Appointment[]
+}
+
+model Visitor {
+  Id      String  @id @default(cuid())
+  Name    String
+  Phone   String
+  Email   String?
+  Address String?
+  Photo   String
+
+  Company      Company?      @relation(fields: [CompanyId], references: [Id])
+  CompanyId    String?
+  History      VisitorLog[]
+  Appointments Appointment[]
+}
+
+model Company {
+  Id      String    @id @default(cuid())
+  Name    String
+  Address String?
+  Staffs  Visitor[]
+}
+
+model VisitorLog {
+  Id             String   @id @default(cuid())
+  VisitorId      String
+  Visitor        Visitor  @relation(fields: [VisitorId], references: [Id])
+  StaffId        String
+  Staff          User     @relation(fields: [StaffId], references: [Id])
+  PurposeOfVisit String
+  TagNo          String
+  NoOfVistiors   Int
+  CheckInTime    String
+  CheckOutTime   String?
+  CreatedAt      DateTime
+}
+
+model Floor {
+  Id   String @id @default(cuid())
+  Name String
+  User User[]
+}
+
+model Department {
+  Id   String @id @default(cuid())
+  Name String
+  User User[]
+}
+
+model Appointment {
+  Id                 String    @id @default(cuid())
+  StaffId            String
+  Staff              User      @relation(fields: [StaffId], references: [Id])
+  VisitorId          String
+  Visitor            Visitor   @relation(fields: [VisitorId], references: [Id])
+  Purpose            String
+  Message            String
+  NoVisitors         Int
+  InvitationCode     String
+  Status             String    @default("created") //created | rescheduled | cancelled 
+  CreatedAt          DateTime
+  AppointmentDate    DateTime
+  RescheduleDate     DateTime?
+  CancellationReason String?
+}
+
+model SMSNotification {
+  Id             String   @id @default(cuid())
+  RecipientPhone String
+  RecipientName  String
+  Message        String
+  RetryCount     Int      @default(0)
+  Status         Int //0=pending, 1=undelivered/failed, 2=delivered
+  LastRetryDate  DateTime
+  ErrorMessage   String
+  CreatedAt      DateTime
+}
+
+model EmailNotification {
+  Id             String   @id @default(cuid())
+  RecipientEmail String
+  RecipientName  String
+  Subject        String
+  Message        String
+  RetryCount     Int      @default(0)
+  Status         Int //0=pending, 1=undelivered/failed, 2=delivered
+  LastRetryDate  DateTime
+  ErrorMessage   String
+  CreatedAt      DateTime
+}
+
+model ArchiveNotification {
+  Id           String   @id @default(cuid())
+  Type         String //email or SmS
+  Recipient    String //email or phone
+  Subject      String?
+  Message      String
+  DeliveryDate DateTime
+  CreatedAt    DateTime
+}
