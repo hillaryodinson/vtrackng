@@ -1,0 +1,36 @@
+version: "3.0"
+services:
+    admin-console:
+        build:
+            context: ./admin-console/
+            target: ${NODE_ENV:-development}
+            args:
+                NODE_ENV: ${NODE_ENV:-development}
+        ports:
+            - 3100:3100
+        develop:
+            watch:
+                - action: sync
+                  path: ./admin-console/
+                  target: /usr/src/app
+                  ignore:
+                      - node_modules/
+                - action: rebuild
+                  path: ./admin-console/package.json
+    api-server:
+        build:
+            context: ./api-server/
+            target: ${NODE_ENV:-development}
+            args:
+                NODE_ENV: ${NODE_ENV:-development}
+        ports:
+            - 3000:3000
+        develop:
+            watch:
+                - action: sync
+                  path: ./api-server/
+                  target: /usr/src/app
+                  ignore:
+                      - node_modules/
+                - action: rebuild
+                  path: ./api-server/package.json
