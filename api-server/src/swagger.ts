@@ -486,6 +486,10 @@ const options = {
 				},
 			},
 			responses: {
+				NoResponse: {
+					description:
+						"No content – operation successful with no response body",
+				},
 				BadRequest: {
 					description: "Bad request",
 					content: {
@@ -661,6 +665,47 @@ const options = {
 										type: "array",
 										items: {
 											$ref: "#/components/schemas/UserOutput",
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+				DepartmentSingle: {
+					description: "List of departments",
+					content: {
+						"application/json": {
+							schema: {
+								type: "object",
+								properties: {
+									success: {
+										type: "boolean",
+										example: "true",
+									},
+									department: {
+										$ref: "#/components/schemas/DepartmentOutput",
+									},
+								},
+							},
+						},
+					},
+				},
+				DepartmentList: {
+					description: "List of departments",
+					content: {
+						"application/json": {
+							schema: {
+								type: "object",
+								properties: {
+									success: {
+										type: "boolean",
+										example: "true",
+									},
+									departments: {
+										type: "array",
+										items: {
+											$ref: "#/components/schemas/DepartmentOutput",
 										},
 									},
 								},

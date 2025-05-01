@@ -5,10 +5,10 @@ import { getErrorMessage } from "../utils/helper";
 
 // Create a new department
 export const createDepartment = async (req: Request, res: Response) => {
-	const { name } = req.body;
+	const { Name } = req.body;
 	const department = await db.department.create({
 		data: {
-			Name: name,
+			Name,
 		},
 	});
 	res.status(201).json({
@@ -45,10 +45,10 @@ export const getDepartment = async (req: Request, res: Response) => {
 // Update a department by ID
 export const updateDepartment = async (req: Request, res: Response) => {
 	const { id } = req.params;
-	const { name } = req.body;
+	const { Name } = req.body;
 	const department = await db.department.update({
 		where: { Id: id },
-		data: { Name: name },
+		data: { Name },
 	});
 	res.status(200).json(department);
 };
