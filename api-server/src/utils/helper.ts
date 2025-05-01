@@ -3,6 +3,7 @@ import db from "../configs/db";
 import path from "path";
 import fs from "fs";
 import { User } from "../generated/prisma";
+import { ERROR_MESSAGES } from "./errors";
 
 export const sendActivationEmail = async (token: string, user: User) => {
 	//verify email address
@@ -90,3 +91,7 @@ export const moveImageToLive = async (
 
 	return livePath;
 };
+
+export function getErrorMessage(code: number): string {
+	return ERROR_MESSAGES[code] || "An unknown error occurred.";
+}
