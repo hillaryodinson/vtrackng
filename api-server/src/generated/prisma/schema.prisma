@@ -23,7 +23,7 @@ model User {
   Id           String        @id @default(cuid())
   FirstName    String
   LastName     String
-  Email        String
+  Email        String        @unique
   Role         Role          @default(Staff)
   Password     String
   StaffID      String?

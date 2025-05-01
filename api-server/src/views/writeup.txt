@@ -1,0 +1,16 @@
+<p>
+						A seamless visitor management system that simplifies how
+						your organization handles guests. Visitors can easily
+						create a profile, check in using their phone number,
+						specify whom they are visiting, and the purpose of their
+						visit. The system supports multiple floors, departments,
+						and buildings, and provides smooth check-out after
+						visits.
+					</p>
+					<p>
+						Staff can schedule and reschedule appointments, send
+						invitation codes to visitors, and automatically create
+						guest profiles. VTrackNG also features real-time
+						appointment detection and a smart waiting room report
+						for both walk-ins and invited guests.
+					</p>

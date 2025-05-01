@@ -13150,12 +13150,12 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     Id?: string
+    Email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     FirstName?: StringFilter<"User"> | string
     LastName?: StringFilter<"User"> | string
-    Email?: StringFilter<"User"> | string
     Role?: EnumRoleFilter<"User"> | $Enums.Role
     Password?: StringFilter<"User"> | string
     StaffID?: StringNullableFilter<"User"> | string | null
@@ -13165,7 +13165,7 @@ export namespace Prisma {
     Department?: XOR<DepartmentScalarRelationFilter, DepartmentWhereInput>
     Floor?: XOR<FloorScalarRelationFilter, FloorWhereInput>
     Appointments?: AppointmentListRelationFilter
-  }, "Id">
+  }, "Id" | "Email">
 
   export type UserOrderByWithAggregationInput = {
     Id?: SortOrder
