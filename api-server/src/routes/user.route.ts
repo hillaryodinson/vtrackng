@@ -6,7 +6,7 @@ import {
 	getUser,
 	listUsers,
 	updateUser,
-} from "../controllers/usercontroller";
+} from "../controllers/user.controller";
 
 const UserRoutes = Router();
 
@@ -19,61 +19,16 @@ const UserRoutes = Router();
  *     tags: [User]
  *     responses:
  *       200:
- *         description: A list of users
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   Id:
- *                     type: string
- *                     description: The user's id
- *                   FirstName:
- *                     type: string
- *                     description: The user's first name
- *                   LastName:
- *                     type: string
- *                     description: The user's last name
- *                   Email:
- *                     type: string
- *                     description: The user's email
- *                   Role:
- *                     type: string
- *                     description: The user's role
- *                     enum: [Admin, Staff]
- *                   Password:
- *                     type: string
- *                     description: The user's password
- *                   DepartmentId:
- *                     type: string
- *                     description: The user's department ID
- *                   FloorId:
- *                     type: string
- *                     description: The user's floor ID
- *                   StaffID:
- *                     type: string
- *                     nullable: true
- *                     description: The user's staff ID
- *       400:
- *         description: Bad request
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   description: whether the request was successful
- *                 message:
- *                   type: string
- *                   description: an error message
- *                 errors:
- *                   type: string
- *                   description: list of errors
+ *          $ref: '#/components/responses/UserList'
+ *       401:
+ *        $ref: '#/components/responses/UnAuthenticated'
+ *       403:
+ *        $ref: '#/components/responses/UnAuthorized'
+ *       404:
+ *        $ref: '#/components/responses/NotFound'
  */
 UserRoutes.get("/", tryCatch(listUsers));
+
 /**
  * @swagger
  * /user:
@@ -86,66 +41,19 @@ UserRoutes.get("/", tryCatch(listUsers));
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               FirstName:
- *                 type: string
- *                 description: The user's first name
- *               LastName:
- *                 type: string
- *                 description: The user's last name
- *               Email:
- *                 type: string
- *                 description: The user's email
- *               Role:
- *                 type: string
- *                 description: The user's role
- *                 enum: [Admin, Staff]
- *               Password:
- *                 type: string
- *                 description: The user's password
- *               DepartmentId:
- *                 type: string
- *                 description: The user's department ID
- *               FloorId:
- *                 type: string
- *                 description: The user's floor ID
- *               StaffID:
- *                 type: string
- *                 nullable: true
- *                 description: The user's staff ID
+ *             $ref: "#/components/schemas/UserInput"
  *     responses:
- *       201:
- *         description: User created successfully
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   description: whether the request was successful
- *                 data:
- *                   type: object
- *                   description: The created user data
- *       400:
- *         description: Bad request
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   description: whether the request was successful
- *                 message:
- *                   type: string
- *                   description: an error message
- *                 errors:
- *                   type: string
- *                   description: list of errors
+ *       200:
+ *          $ref: '#/components/responses/UserList'
+ *       401:
+ *        $ref: '#/components/responses/UnAuthenticated'
+ *       403:
+ *        $ref: '#/components/responses/UnAuthorized'
+ *       404:
+ *        $ref: '#/components/responses/NotFound'
  */
 UserRoutes.post("/", tryCatch(createUser));
+
 /**
  * @swagger
  * /user/{id}:
@@ -165,66 +73,19 @@ UserRoutes.post("/", tryCatch(createUser));
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               FirstName:
- *                 type: string
- *                 description: The user's first name
- *               LastName:
- *                 type: string
- *                 description: The user's last name
- *               Email:
- *                 type: string
- *                 description: The user's email
- *               Role:
- *                 type: string
- *                 description: The user's role
- *                 enum: [Admin, Staff]
- *               Password:
- *                 type: string
- *                 description: The user's password
- *               DepartmentId:
- *                 type: string
- *                 description: The user's department ID
- *               FloorId:
- *                 type: string
- *                 description: The user's floor ID
- *               StaffID:
- *                 type: string
- *                 nullable: true
- *                 description: The user's staff ID
+ *             $ref: "#/components/schemas/UserInput"
  *     responses:
  *       200:
- *         description: User updated successfully
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   description: whether the request was successful
- *                 data:
- *                   type: object
- *                   description: The updated user data
+ *         $ref: "#/components/responses/UserSingle"
  *       400:
- *         description: Bad request
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   description: whether the request was successful
- *                 message:
- *                   type: string
- *                   description: an error message
- *                 errors:
- *                   type: string
- *                   description: list of errors
+ *         $ref: "#/components/responses/BadRequest"
+ *       401:
+ *         $ref: "#/components/responses/UnAuthenticated"
+ *       403:
+ *         $ref: "#/components/responses/UnAuthorized"
  */
 UserRoutes.put("/:id", tryCatch(updateUser));
+
 /**
  * @swagger
  * /user/{id}:
@@ -241,33 +102,12 @@ UserRoutes.put("/:id", tryCatch(updateUser));
  *         description: The user's ID
  *     responses:
  *       200:
- *         description: User retrieved successfully
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   description: whether the request was successful
- *                 data:
- *                   type: object
- *                   description: The user data
- *       404:
- *         description: User not found
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   description: whether the request was successful
- *                 message:
- *                   type: string
- *                   description: an error message
+ *         $ref: "#/components/responses/UserSingle"
+ *       400:
+ *         $ref: "#/components/responses/BadRequest"
  */
 UserRoutes.get("/:id", tryCatch(getUser));
+
 /**
  * @swagger
  * /user/{id}:
@@ -284,7 +124,7 @@ UserRoutes.get("/:id", tryCatch(getUser));
  *         description: The user's ID
  *     responses:
  *       200:
- *         description: User deleted successfully
+ *         description: Successful deletion
  *         content:
  *           application/json:
  *             schema:
@@ -292,23 +132,16 @@ UserRoutes.get("/:id", tryCatch(getUser));
  *               properties:
  *                 success:
  *                   type: boolean
- *                   description: whether the request was successful
+ *                   example: true
  *                 message:
  *                   type: string
- *                   description: A success message
- *       404:
- *         description: User not found
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   description: whether the request was successful
- *                 message:
- *                   type: string
- *                   description: an error message
+ *                   example: "User deleted successfully"
+ *       400:
+ *         $ref: "#/components/responses/BadRequest"
+ *       401:
+ *         $ref: "#/components/responses/UnAuthenticated"
+ *       403:
+ *         $ref: "#/components/responses/UnAuthorized"
  */
 UserRoutes.delete("/:id", tryCatch(deleteUser));
 
