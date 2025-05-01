@@ -713,6 +713,47 @@ const options = {
 						},
 					},
 				},
+				FloorSingle: {
+					description: "List of departments",
+					content: {
+						"application/json": {
+							schema: {
+								type: "object",
+								properties: {
+									success: {
+										type: "boolean",
+										example: "true",
+									},
+									department: {
+										$ref: "#/components/schemas/FloorOutput",
+									},
+								},
+							},
+						},
+					},
+				},
+				FloorList: {
+					description: "List of departments",
+					content: {
+						"application/json": {
+							schema: {
+								type: "object",
+								properties: {
+									success: {
+										type: "boolean",
+										example: "true",
+									},
+									departments: {
+										type: "array",
+										items: {
+											$ref: "#/components/schemas/FloorOutput",
+										},
+									},
+								},
+							},
+						},
+					},
+				},
 			},
 		},
 	},
