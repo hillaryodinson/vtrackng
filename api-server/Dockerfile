@@ -3,6 +3,7 @@ FROM node:alpine AS base
 ARG NODE_ENV=development
 # Make it available at runtime
 ENV NODE_ENV=$NODE_ENV
+
 WORKDIR /usr/src/app/
 COPY package*.json ./
 

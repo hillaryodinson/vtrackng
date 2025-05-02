@@ -34,6 +34,8 @@ services:
             target: ${NODE_ENV:-development}
             args:
                 NODE_ENV: ${NODE_ENV:-development}
+        env_file:
+            - ./api-server/.env.docker
         ports:
             - 3000:3000
         depends_on:
