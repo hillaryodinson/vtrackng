@@ -67,7 +67,7 @@ model VisitorLog {
   NoOfVistiors   Int
   CheckInTime    String
   CheckOutTime   String?
-  CreatedAt      DateTime
+  CreatedAt      DateTime @default(now())
 }
 
 model Floor {
