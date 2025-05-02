@@ -14003,7 +14003,7 @@ export namespace Prisma {
     NoOfVistiors: number
     CheckInTime: string
     CheckOutTime?: string | null
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     Visitor: VisitorCreateNestedOneWithoutHistoryInput
     Staff: UserCreateNestedOneWithoutVisitorLogsInput
   }
@@ -14017,7 +14017,7 @@ export namespace Prisma {
     NoOfVistiors: number
     CheckInTime: string
     CheckOutTime?: string | null
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
   }
 
   export type VisitorLogUpdateInput = {
@@ -14053,7 +14053,7 @@ export namespace Prisma {
     NoOfVistiors: number
     CheckInTime: string
     CheckOutTime?: string | null
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
   }
 
   export type VisitorLogUpdateManyMutationInput = {
@@ -15677,7 +15677,7 @@ export namespace Prisma {
     NoOfVistiors: number
     CheckInTime: string
     CheckOutTime?: string | null
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     Visitor: VisitorCreateNestedOneWithoutHistoryInput
   }
 
@@ -15689,7 +15689,7 @@ export namespace Prisma {
     NoOfVistiors: number
     CheckInTime: string
     CheckOutTime?: string | null
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
   }
 
   export type VisitorLogCreateOrConnectWithoutStaffInput = {
@@ -15901,7 +15901,7 @@ export namespace Prisma {
     NoOfVistiors: number
     CheckInTime: string
     CheckOutTime?: string | null
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     Staff: UserCreateNestedOneWithoutVisitorLogsInput
   }
 
@@ -15913,7 +15913,7 @@ export namespace Prisma {
     NoOfVistiors: number
     CheckInTime: string
     CheckOutTime?: string | null
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
   }
 
   export type VisitorLogCreateOrConnectWithoutVisitorInput = {
@@ -16463,7 +16463,7 @@ export namespace Prisma {
     NoOfVistiors: number
     CheckInTime: string
     CheckOutTime?: string | null
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
   }
 
   export type AppointmentCreateManyStaffInput = {
@@ -16563,7 +16563,7 @@ export namespace Prisma {
     NoOfVistiors: number
     CheckInTime: string
     CheckOutTime?: string | null
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
   }
 
   export type AppointmentCreateManyVisitorInput = {
