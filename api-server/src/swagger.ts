@@ -590,6 +590,35 @@ const options = {
 						},
 					},
 				},
+				ServerError: {
+					description: "Server Error",
+					content: {
+						"application/json": {
+							schema: {
+								type: "object",
+								properties: {
+									success: {
+										type: "boolean",
+										example: "false",
+									},
+									message: {
+										type: "string",
+										example: getErrorMessage(
+											ERROR_CODES.SERVICE_UNAVAILABLE
+										),
+									},
+									errorCode: {
+										type: "string",
+										example: "1100",
+									},
+									errors: {
+										type: "object",
+									},
+								},
+							},
+						},
+					},
+				},
 				VisitorSingle: {
 					description: "Successful visitor fetch",
 					content: {
@@ -747,6 +776,47 @@ const options = {
 										type: "array",
 										items: {
 											$ref: "#/components/schemas/FloorOutput",
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+				VisitorLogSingle: {
+					description: "Vistors Log",
+					content: {
+						"application/json": {
+							schema: {
+								type: "object",
+								properties: {
+									success: {
+										type: "boolean",
+										example: "true",
+									},
+									department: {
+										$ref: "#/components/schemas/VisitorLogOutput",
+									},
+								},
+							},
+						},
+					},
+				},
+				VisitorLogList: {
+					description: "List of Visitor Logs",
+					content: {
+						"application/json": {
+							schema: {
+								type: "object",
+								properties: {
+									success: {
+										type: "boolean",
+										example: "true",
+									},
+									departments: {
+										type: "array",
+										items: {
+											$ref: "#/components/schemas/VisitorLogOutput",
 										},
 									},
 								},

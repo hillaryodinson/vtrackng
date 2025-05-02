@@ -95,3 +95,13 @@ export const moveImageToLive = async (
 export function getErrorMessage(code: number): string {
 	return ERROR_MESSAGES[code] || "An unknown error occurred.";
 }
+
+export const getCurrentTime = () => {
+	const now = new Date();
+	let hours = now.getHours();
+	const minutes = now.getMinutes();
+	const ampm = hours >= 12 ? "PM" : "AM";
+	hours = hours % 12 || 12; // Convert to 12-hour format
+	const minutesStr = minutes < 10 ? `0${minutes}` : minutes; // Add leading zero if needed
+	return `${hours}:${minutesStr} ${ampm}`;
+};
