@@ -90,10 +90,10 @@ model Appointment {
   Visitor            Visitor   @relation(fields: [VisitorId], references: [Id])
   Purpose            String
   Message            String
-  NoVisitors         Int
+  NoVisitors         Int       @default(1)
   InvitationCode     String
-  Status             String    @default("created") //created | rescheduled | cancelled 
-  CreatedAt          DateTime
+  Status             String    @default("pending") //pending | rescheduled | cancelled | visitor_around | done
+  CreatedAt          DateTime  @default(now())
   AppointmentDate    DateTime
   RescheduleDate     DateTime?
   CancellationReason String?
