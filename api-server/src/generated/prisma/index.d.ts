@@ -14160,10 +14160,10 @@ export namespace Prisma {
     Id?: string
     Purpose: string
     Message: string
-    NoVisitors: number
+    NoVisitors?: number
     InvitationCode: string
     Status?: string
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     AppointmentDate: Date | string
     RescheduleDate?: Date | string | null
     CancellationReason?: string | null
@@ -14177,10 +14177,10 @@ export namespace Prisma {
     VisitorId: string
     Purpose: string
     Message: string
-    NoVisitors: number
+    NoVisitors?: number
     InvitationCode: string
     Status?: string
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     AppointmentDate: Date | string
     RescheduleDate?: Date | string | null
     CancellationReason?: string | null
@@ -14222,10 +14222,10 @@ export namespace Prisma {
     VisitorId: string
     Purpose: string
     Message: string
-    NoVisitors: number
+    NoVisitors?: number
     InvitationCode: string
     Status?: string
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     AppointmentDate: Date | string
     RescheduleDate?: Date | string | null
     CancellationReason?: string | null
@@ -15736,10 +15736,10 @@ export namespace Prisma {
     Id?: string
     Purpose: string
     Message: string
-    NoVisitors: number
+    NoVisitors?: number
     InvitationCode: string
     Status?: string
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     AppointmentDate: Date | string
     RescheduleDate?: Date | string | null
     CancellationReason?: string | null
@@ -15751,10 +15751,10 @@ export namespace Prisma {
     VisitorId: string
     Purpose: string
     Message: string
-    NoVisitors: number
+    NoVisitors?: number
     InvitationCode: string
     Status?: string
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     AppointmentDate: Date | string
     RescheduleDate?: Date | string | null
     CancellationReason?: string | null
@@ -15930,10 +15930,10 @@ export namespace Prisma {
     Id?: string
     Purpose: string
     Message: string
-    NoVisitors: number
+    NoVisitors?: number
     InvitationCode: string
     Status?: string
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     AppointmentDate: Date | string
     RescheduleDate?: Date | string | null
     CancellationReason?: string | null
@@ -15945,10 +15945,10 @@ export namespace Prisma {
     StaffId: string
     Purpose: string
     Message: string
-    NoVisitors: number
+    NoVisitors?: number
     InvitationCode: string
     Status?: string
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     AppointmentDate: Date | string
     RescheduleDate?: Date | string | null
     CancellationReason?: string | null
@@ -16471,10 +16471,10 @@ export namespace Prisma {
     VisitorId: string
     Purpose: string
     Message: string
-    NoVisitors: number
+    NoVisitors?: number
     InvitationCode: string
     Status?: string
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     AppointmentDate: Date | string
     RescheduleDate?: Date | string | null
     CancellationReason?: string | null
@@ -16571,10 +16571,10 @@ export namespace Prisma {
     StaffId: string
     Purpose: string
     Message: string
-    NoVisitors: number
+    NoVisitors?: number
     InvitationCode: string
     Status?: string
-    CreatedAt: Date | string
+    CreatedAt?: Date | string
     AppointmentDate: Date | string
     RescheduleDate?: Date | string | null
     CancellationReason?: string | null
