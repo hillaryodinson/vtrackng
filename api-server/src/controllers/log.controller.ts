@@ -28,6 +28,53 @@ export const checkin = async (req: Request, res: Response) => {
 	});
 };
 
+// Checks a visitor In with invite code
+export const checkInWithInvitationCode = async (
+	req: Request,
+	res: Response
+) => {
+	const { inviteCode, tagNo } = req.body;
+	if (!inviteCode) {
+		const errCode = ERROR_CODES.VALIDATION_MISSING_FIELD;
+		throw new AppError(errCode, getErrorMessage(errCode));
+	}
+	const appointment = await db.appointment.findFirst({
+		where: {
+			InvitationCode: inviteCode,
+			AppointmentDate: new Date(new Date().toDateString()),
+		},
+	});
+
+	if (!appointment) {
+		const errCode = ERROR_CODES.ITEM_NOT_FOUND;
+		throw new AppError(errCode, getErrorMessage(errCode));
+	}
+
+	const CheckInTime = getCurrentTime();
+
+	//log appointment to log book and
+	await db.visitorLog.create({
+		data: {
+			VisitorId: appointment.VisitorId,
+			StaffId: appointment.StaffId,
+			PurposeOfVisit: appointment.Purpose,
+			TagNo: tagNo,
+			NoOfVistiors: appointment.NoVisitors,
+			CheckInTime,
+		},
+	});
+
+	await db.appointment.update({
+		data: { Status: "visitor_around" },
+		where: { Id: appointment.Id },
+	});
+
+	res.status(201).json({
+		success: true,
+		message: "Appointment booked successfully",
+	});
+};
+
 // Checks out a visitor by tag Id
 export const checkout = async (req: Request, res: Response) => {
 	const { tagno } = req.params;

@@ -2,6 +2,7 @@ import { Router } from "express";
 import { tryCatch } from "../middlewares/middleware";
 import {
 	checkin,
+	checkInWithInvitationCode,
 	checkout,
 	listVisitorLogs,
 } from "../controllers/log.controller";
@@ -30,6 +31,50 @@ const VisitorsLogRoute = Router();
  *         $ref: '#/components/responses/ServerError'
  */
 VisitorsLogRoute.post("/checkin", tryCatch(checkin));
+
+/**
+ * @swagger
+ * /logs/checkinwithcode:
+ *   post:
+ *     summary: Create a new VisitorLog with Invitation Code
+ *     description: Records a visitor's check-in details including tagno, number of visitors, and an invitation code.
+ *     tags:
+ *       - VisitorsLog
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               invitationCode:
+ *                 type: string
+ *                 description: The invitation code provided to the visitor.
+ *               tagNo:
+ *                 type: string
+ *                 description: The tag number assigned to the visitor.
+ *               visitorId:
+ *                 type: string
+ *                 description: The ID of the visitor.
+ *               staffId:
+ *                 type: string
+ *                 description: The ID of the staff member the visitor is meeting.
+ *               purpose:
+ *                 type: string
+ *                 description: The purpose of the visit.
+ *               numberOfVisitors:
+ *                 type: number
+ *                 description: The number of visitors accompanying the main visitor.
+ *     responses:
+ *       201:
+ *          $ref: '#/components/responses/VisitorLogSingle'
+ *       400:
+ *         $ref: '#/components/responses/BadRequest'
+ *       500:
+ *         $ref: '#/components/responses/ServerError'
+ */
+VisitorsLogRoute.post("/checkin", tryCatch(checkInWithInvitationCode));
+
 /**
  * @swagger
  * /logs/checkout:

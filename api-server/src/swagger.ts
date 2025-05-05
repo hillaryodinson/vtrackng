@@ -50,6 +50,22 @@ const options = {
 				name: "User",
 				description: "User related endpoints",
 			},
+			{
+				name: "Floor",
+				description: "Floor related endpoints",
+			},
+			{
+				name: "Department",
+				description: "Department related endpoints",
+			},
+			{
+				name: "Visitors",
+				description: "Visitor related endpoints",
+			},
+			{
+				name: "VisitorsLog",
+				description: "VisitorLog related endpoints",
+			},
 		],
 		components: {
 			securitySchemes: {

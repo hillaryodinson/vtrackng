@@ -1,12 +1,13 @@
 import { Router } from "express";
 import { tryCatch } from "../middlewares/middleware";
+
 import {
 	createDepartment,
 	deleteDepartment,
 	getDepartment,
 	getDepartments,
 	updateDepartment,
-} from "../controllers/department.controller";
+} from "../controllers/dept.controller";
 const DeptRoutes = Router();
 
 /**
@@ -107,6 +108,7 @@ DeptRoutes.delete("/:id", tryCatch(deleteDepartment));
  *         $ref: "#/components/responses/UnAuthorized"
  */
 DeptRoutes.put("/:id", tryCatch(updateDepartment));
+
 /**
  * @swagger
  * /departments:

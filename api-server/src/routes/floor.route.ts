@@ -6,7 +6,7 @@ import {
 	getFloor,
 	getFloors,
 	updateFloor,
-} from "../controllers/floor.controller";
+} from "../controllers/floors.controller";
 const FloorRoutes = Router();
 
 /**
@@ -107,6 +107,7 @@ FloorRoutes.delete("/:id", tryCatch(deleteFloor));
  *         $ref: "#/components/responses/UnAuthorized"
  */
 FloorRoutes.put("/:id", tryCatch(updateFloor));
+
 /**
  * @swagger
  * /floors:
